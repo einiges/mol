@@ -124,9 +124,8 @@ run:
 		--w;
 	}
 
-	if (w > 0)
-		for (; w > 0; --w)
-			putchar(base_char_limit(base, base_uppercase));
+	for (; w > 0; --w)
+		putchar(base_char_limit(base, base_uppercase));
 
 	if (display_indicator)
 		printf("%s", indicator);
