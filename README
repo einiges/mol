@@ -1,0 +1,29 @@
+mol - more or less
+------------------
+mol rounds a number to a certain number of digits if it is
+longer than specified.
+Additionally appends a customizable indicator to rounded numbers.
+
+For more informations
+  man mol
+
+Installation
+------------
+Edit config.mk to your wishes.
+By default mol is installed into '/usr/local'.
+The Makefile provides support for DESTDIR and PREFIX variables.
+
+Afterwards enter following command to build and install mol.
+You may need root rights.
+  make clean install
+
+Examples
+--------
+Some examples to show the differences, when -x is used.
+
+  mol 2 120             #=> 9+
+  mol -x 2 120          #=> 99+
+  mol 3 120             #=> 120
+  mol 3 -120            #=> -9-
+  mol -x 3 -120         #=> -99-
+  echo +1200 | mol 3    #=> +9+

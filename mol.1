@@ -1,0 +1,85 @@
+.TH mol 1 "" mol\-VERSION
+
+
+.SH NAME
+mol \- more or less
+
+
+.SH SYNOPSIS
+.B mol
+.RB [ \-nsxhv ]
+.RB [ \-bB " \fIbase\fR" \fR]
+.RB [ \-i " \fIpositiveIndicator\fR" \fR]
+.RB [ \-I " \fInegativeIndicator\fR" \fR]
+.R WIDTH [ NUMBER ]
+
+
+.SH DESCRIPTION
+.B mol
+.R rounds a NUMBER to a certain number of digits if it is to longer than specified with WIDTH.
+.R A indicator is appended to rounded numbers.
+.R The indicator reserves space of WIDTH, which can be suppressed with the \fB\-x\fR option.
+.br
+.R When NUMBER contains less or equal digits than specified with
+.R WIDTH, \fBmol\fR just outputs NUMBER.
+
+.R By default the indicator is '+' for positive numbers and '-' for negatives.
+
+.R When NUMBER is signed, the output of \fBmol\fR is also.
+
+.R When no number is given, \fBmol\fR tries to read from stdin.
+
+.B mol
+.R will not evaluate NUMBER. Do not expect correct results with unusual input.
+
+
+.SH OPTIONS
+
+.TP
+.BI \-b " base"
+.R The highest possible digit off \fIbase\fR is used when rounding.
+.br
+.R (2 - 36, default 10)
+
+.TP
+.BI \-B " base"
+.R same as \fB\-b\fR, but digits are uppercase.
+.br
+.R Only useful when \fIbase\fR is greater than 10.
+
+
+.TP
+.BI \-i " positiveIndicator"
+.RE
+.BI \-I " negativeIndicator"
+.RS
+.R Changes the rounding indicator of positive/negative numbers.
+.br
+.R When used without \fB\-x\fR, WIDTH has to be at least the size of the longest indicator.
+.br
+.R (default positive: +, negative: -)
+.RE
+
+.TP
+.B \-n
+.R do not print a trailing newline.
+
+.TP
+.B \-s
+.R do not print the indicator.
+
+.TP
+.B \-x
+.R Excludes the indicator from WIDTH.
+
+.TP
+.B \-h
+.R prints a short help to stderr, then exits.
+
+.TP
+.B \-v
+.R prints version information to stderr, then exits.
+
+
+.SH LICENSE
+.R See the LICENSE file for the terms of redistribution.
