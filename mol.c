@@ -35,7 +35,7 @@ main(int argc, char *argv[])
 		base_uppercase = true;
 	case 'b':
 		errno = 0;
-		base = strtol(EARGF(usage(1)), NULL, 10);
+		base = strtol(EARGF(usage(EXIT_FAILURE)), NULL, 10);
 		if (errno == ERANGE || 2 > base || base > 36)
 			die("base out of range.\n");
 		break;
