@@ -58,7 +58,7 @@ main(int argc, char *argv[])
 		usage(EXIT_SUCCESS);
 		break;
 	case 'v':
-		fprintf(stderr, "%s " VERSION " (c) 2017 Jens Henniges\n", argv0);
+		fprintf(stderr, VERSION "\n");
 		exit(EXIT_SUCCESS);
 		break;
 	} ARGEND;
