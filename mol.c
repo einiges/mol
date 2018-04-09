@@ -61,12 +61,8 @@ main(int argc, char *argv[])
 		fprintf(stderr, "%s " VERSION " (c) 2017 Jens Henniges\n", argv0);
 		exit(EXIT_SUCCESS);
 		break;
-	default:
-		goto run;
 	} ARGEND;
 
-
-run:
 	if (argc < 1)
 		usage(EXIT_FAILURE);
 
