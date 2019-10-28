@@ -26,6 +26,7 @@ main(int argc, char *argv[])
 	bool display_return = true;
 	bool display_indicator = true;
 	bool include_indicator = true;
+	bool indicator_first = false;
 	char *positive_indicator = "+";
 	char *negative_indicator = "-";
 
@@ -38,6 +39,9 @@ main(int argc, char *argv[])
 		base = strtol(EARGF(usage(EXIT_FAILURE)), NULL, 10);
 		if (errno == ERANGE || 2 > base || base > 36)
 			die("base out of range.\n");
+		break;
+	case 'f':
+		indicator_first = true;
 		break;
 	case 'i':
 		positive_indicator = EARGF(usage(EXIT_FAILURE));
@@ -120,10 +124,13 @@ main(int argc, char *argv[])
 		--w;
 	}
 
+	if (display_indicator && indicator_first)
+		printf("%s", indicator);
+
 	for (; w > 0; --w)
 		putchar(base_char_limit(base, base_uppercase));
 
-	if (display_indicator)
+	if (display_indicator && !indicator_first)
 		printf("%s", indicator);
 
 
@@ -167,7 +174,7 @@ base_char_limit(int base, bool uppercase)
 void
 usage(int status)
 {
-	fprintf(stderr, "usage: %s [-nsxhv] [-bB base] [-i positive_indicator] "
+	fprintf(stderr, "usage: %s [-fnsxhv] [-bB base] [-i positive_indicator] "
 	                "[-I negative_indicator] width [number]\n", argv0);
 	exit(status);
 }
