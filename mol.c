@@ -27,8 +27,8 @@ main(int argc, char *argv[])
 	bool display_indicator = true;
 	bool include_indicator = true;
 	bool indicator_first = false;
-	char *positive_indicator = "+";
-	char *negative_indicator = "-";
+	char *more_indicator = "+";
+	char *less_indicator = "-";
 
 
 	ARGBEGIN {
@@ -43,11 +43,11 @@ main(int argc, char *argv[])
 	case 'f':
 		indicator_first = true;
 		break;
-	case 'i':
-		positive_indicator = EARGF(usage(EXIT_FAILURE));
+	case 'l':
+		less_indicator = EARGF(usage(EXIT_FAILURE));
 		break;
-	case 'I':
-		negative_indicator = EARGF(usage(EXIT_FAILURE));
+	case 'm':
+		more_indicator = EARGF(usage(EXIT_FAILURE));
 		break;
 	case 'n':
 		display_return = false;
@@ -79,7 +79,7 @@ main(int argc, char *argv[])
 		die("width is not a number.\n");
 
 	if (include_indicator && display_indicator && width > 0 &&
-	   (width < strlen(positive_indicator) || width < strlen(negative_indicator)))
+	   (width < strlen(more_indicator) || width < strlen(less_indicator)))
 		die("width is smaller than the length of at least one indicator\n");
 
 	char *cnum;
@@ -113,7 +113,7 @@ main(int argc, char *argv[])
 
 
 	int w = width;
-	char *indicator = NEGATIVE(cnum) ? negative_indicator : positive_indicator;
+	char *indicator = NEGATIVE(cnum) ? less_indicator : more_indicator;
 
 	if (include_indicator && display_indicator)
 		w -= strlen(indicator);
@@ -174,8 +174,8 @@ base_char_limit(int base, bool uppercase)
 void
 usage(int status)
 {
-	fprintf(stderr, "usage: %s [-fnsxhv] [-bB base] [-i positive_indicator] "
-	                "[-I negative_indicator] width [number]\n", argv0);
+	fprintf(stderr, "usage: %s [-fnsxhv] [-bB base] [-l less_indicator] "
+	                "[-m more_indicator] width [number]\n", argv0);
 	exit(status);
 }
 

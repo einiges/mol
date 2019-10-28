@@ -9,8 +9,8 @@ mol \- more or less
 .B mol
 .RB [ \-fnsxhv ]
 .RB [ \-bB " \fIbase\fR]
-.RB [ \-i " \fIpositiveIndicator\fR]"
-.RB [ \-I " \fInegativeIndicator\fR]"
+.RB [ \-m " \fImore_indicator\fR]"
+.RB [ \-l " \fIless_indicator\fR]"
 .R WIDTH [ NUMBER ]
 
 
@@ -52,16 +52,20 @@ mol \- more or less
 .R Show indicator in front of number.
 
 .TP
-.BI \-i " positiveIndicator"
-.RE
-.BI \-I " negativeIndicator"
-.RS
-.R Changes the rounding indicator of positive/negative numbers.
+.BI \-l " less_indicator"
+.R Changes the printed indicator when number is rounded and number is \fBnegative\fR.
 .br
 .R When used without \fB\-x\fR, WIDTH has to be at least the size of the longest indicator.
 .br
-.R (default positive: +, negative: -)
-.RE
+.R (default: -)
+
+.TP
+.BI \-m " more_indicator"
+.R Changes the printed indicator when number is rounded and number is \fBpositive\fR.
+.br
+.R When used without \fB\-x\fR, WIDTH has to be at least the size of the longest indicator.
+.br
+.R (default: +)
 
 .TP
 .B \-n
