@@ -82,20 +82,17 @@ main(int argc, char *argv[])
 	   (width < strlen(more_indicator) || width < strlen(less_indicator)))
 		die("width is smaller than the length of at least one indicator\n");
 
+	int cin_buf_siz = width + 2;
+	char sin[cin_buf_siz];
 	char *cnum;
+
 	if (argc > 1)
 	{
 		cnum = argv[1];
 	}
 	else
 	{
-		/*
-		 * It is enough to read width + 1 bytes to know that the input is longer than width.
-		 * +2 additional bytes for a trailing newline and a terminating '\0'
-		 */
-		int cin_buf_siz = width + 3;
-		char sin[cin_buf_siz];
-		if (fgets(sin, cin_buf_siz, stdin) == NULL)
+		if (!fgets(sin, cin_buf_siz, stdin))
 			die("Input Required\n");
 		sin[strcspn(sin, "\r\n")] = '\0';
 		cnum = sin;
