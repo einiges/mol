@@ -26,4 +26,6 @@ Some examples to show the differences, when -x is used.
   mol 3 120             #=> 120
   mol 3 -120            #=> -9-
   mol -x 3 -120         #=> -99-
+  mol -xf -m \> 2 120   #=> >99
+  mol -xf -l \< 3 -120  #=> <-99
   echo +1200 | mol 3    #=> +9+
