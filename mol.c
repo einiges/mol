@@ -115,14 +115,14 @@ main(int argc, char *argv[])
 	if (include_indicator && display_indicator)
 		w -= strlen(indicator);
 
+	if (display_indicator && indicator_first)
+		printf("%s", indicator);
+
 	if (w > 0 && SIGNED(cnum))
 	{
 		putchar(SIGN(cnum));
 		--w;
 	}
-
-	if (display_indicator && indicator_first)
-		printf("%s", indicator);
 
 	for (; w > 0; --w)
 		putchar(base_char_limit(base, base_uppercase));
